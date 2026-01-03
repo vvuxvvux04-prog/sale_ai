@@ -1,0 +1,36 @@
+<h2>Dashboard ({{role}})</h2>
+
+{% if role!="viewer" %}
+<h3>Add Sale</h3>
+<form method="post">
+  <input type="hidden" name="type" value="sale">
+  <input name="item" placeholder="Item" required>
+  <input name="amount" placeholder="Amount" required>
+  <input name="discount" placeholder="Discount" value="0">
+  <button>Add Sale</button>
+</form>
+
+<h3>Add Expense</h3>
+<form method="post">
+  <input type="hidden" name="type" value="expense">
+  <input name="item" placeholder="Item" required>
+  <input name="amount" placeholder="Amount" required>
+  <button>Add Expense</button>
+</form>
+{% endif %}
+
+<h3>Total Sale: {{sale_total}}</h3>
+<h3>Total Expense: {{exp_total}}</h3>
+<h2>Banking (Grand Total): {{bank}}</h2>
+
+<img src="/static/graph.png">
+
+<h3>Sale Sheet</h3>
+{{sale|safe}}
+
+<h3>Expense Sheet</h3>
+{{expense|safe}}
+
+<br>
+<a href="/delete">DELETE DATA</a> |
+<a href="/logout">LOGOUT</a>
